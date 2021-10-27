@@ -1,0 +1,32 @@
+{
+  "parseUrl": [
+    {
+      "name": "my-url-name-1",
+      "link": "https://example-domain.com"
+    },
+    {
+      "name": "my-url-name-2",
+      "link": "https://example-domain.com/articles/"
+    }
+  ],
+  "parseUrlSelectors": {
+    "main": "div#content div.text-box-obsah",
+    "articleTitle": "h2",
+    "articleText": "p",
+    "articleDetailHref": "href"
+  },
+  "mailer": {
+    "host": "smtp.seznam.cz",
+    "port": "465",
+    "secure": true,
+    "auth": {
+      "user": "example@domain.com",
+      "pass": "MySuperSecretPassword"
+    },
+    "mailOptions": {
+      "to": "recipient1@domain.com, recipient2@domain.com",
+      "subject": "Subject for email"
+    },
+    "admin": "admin@domain.com"
+  }
+}
