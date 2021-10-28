@@ -50,26 +50,11 @@ export const sendEmail = async (mailerData: Mailer) => {
   await transporter.close();
 };
 
-export const getMailConfig = (config: Config) => ({
-  host: config.mailer.host,
-  port: config.mailer.port,
-  secure: config.mailer.secure,
-  auth: {
-    user: config.mailer.auth.user,
-    pass: config.mailer.auth.pass,
-  },
-  mailOptions: {
-    to: config.mailer.mailOptions.to,
-    subject: config.mailer.mailOptions.subject,
-    html: '',
-  },
-});
-
 export const generateMailDataWithArticles = (
   config: Config,
   articleNews: ArticleNew[]
 ) => {
-  const mailData = getMailConfig(config);
+  const mailData = config.mailer;
   let html = '';
   articleNews.forEach((article) => {
     html += `<strong>Sekce:</strong> ${article.urlName}<br>`;
@@ -82,7 +67,7 @@ export const generateMailDataWithArticles = (
 };
 
 export const generateMailDataWithError = (config: Config, message: string) => {
-  const mailData = getMailConfig(config);
+  const mailData = config.mailer;
   if (config.mailer.admin) {
     mailData.mailOptions.to = config.mailer.admin;
     mailData.mailOptions.subject = 'Error - Školka klíček';
