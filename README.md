@@ -74,7 +74,7 @@ Requires **config.json** file in the ROOT
 
 ## Build & Installation
 
-1. clone this git-repo
+1. Fork this git-repo
 2. npm install
 3. npm run build
 4. -> This will generate (using webpack) bundled version in the ./dist/app.bundle.js
@@ -82,11 +82,12 @@ Requires **config.json** file in the ROOT
 ## Deploy & Run
 
 1. Copy/Deploy app.bunde.js to your hosting with running Node env
-2. Adjust config.json based on your needs and copy it to the same location as app.bundle.js
-3. node app.bundle.js
-4. Make this script run (CRON JOB) every 1 hour or so
-5. As default APP logs info messages to **./info.log** and error messages to **./error.log**
-6. Articles are stored to file **./storage.json**
+2. npm install --production
+3. Adjust config.json based on your needs and copy it to the same location as app.bundle.js
+4. node app.bundle.js
+5. Make this script run (CRON JOB) every 1 hour or so
+6. As default APP logs info messages to **./info.log** and error messages to **./error.log**
+7. Articles are stored to file **./storage.json**
 
 ## NPM packages used
 

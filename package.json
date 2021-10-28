@@ -4,7 +4,7 @@
   "description": "",
   "main": "./dist/app.js",
   "scripts": {
-    "start": "npm run compile && node ./dist/app.js",
+    "start": "npm run compile && cd dist && node app.js",
     "compile": "tsc",
     "build": "npm run compile && webpack --mode=production",
     "test": "echo \"Error: no test specified\" && exit 1"

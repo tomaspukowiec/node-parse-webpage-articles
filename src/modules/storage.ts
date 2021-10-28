@@ -45,9 +45,17 @@ export const handleStorageChanges = async (
   } else {
     parseUrlNews.forEach((url) => {
       const parseUrl: ParseUrl = url;
-      const storageParseUrl: ParseUrl = <ParseUrl>(
+      let storageParseUrl: ParseUrl = <ParseUrl>(
         storage.parseUrl.find((e) => e.name === parseUrl.name)
       );
+      if (storageParseUrl === undefined) {
+        storageParseUrl = {
+          name: parseUrl.name,
+          link: parseUrl.link,
+          article: [],
+        };
+        storage.parseUrl.push(storageParseUrl);
+      }
       parseUrl.article.forEach((article) => {
         const existsTitle = storageParseUrl.article.some(
           (el) => el.title === article.title
