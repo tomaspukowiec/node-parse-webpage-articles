@@ -6,12 +6,8 @@ import { PUPPETEER_OPTIONS } from '../models/const';
 import { currentDate, isEmpty } from '../utils/util';
 
 const validateArticle = (article: Article) => {
-  if (
-    isEmpty(article.title) ||
-    isEmpty(article.text) ||
-    isEmpty(article.href)
-  ) {
-    throw new Error('Article could not match - missing title, text or href');
+  if (isEmpty(article.title) || isEmpty(article.href)) {
+    throw new Error('Article could not match - missing title or href');
   }
 };
 
