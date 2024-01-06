@@ -6,8 +6,8 @@ import { PUPPETEER_OPTIONS } from '../models/const';
 import { currentDate, isEmpty } from '../utils/util';
 
 const validateArticle = (article: Article) => {
-  if (isEmpty(article.title) || isEmpty(article.href)) {
-    throw new Error('Article could not match - missing title or href');
+  if (isEmpty(article.title)) {
+    throw new Error('Article could not match - missing title');
   }
 };
 
@@ -32,13 +32,19 @@ const parseUrl = async (url: ParseUrl, config: Config) => {
     };
     const elements = $(selector.main);
     elements.each((index: any, el: any) => {
+      const text = selector.text
+        ? $(el).find(selector.text).first().text() || null
+        : null;
+      const href = selector.href
+        ? urlDomain + $(el).find('a').attr(selector.href)
+        : null;
       const article: Article = {
         date: currentDate(),
         title: $(el).find(selector.title).text() || null,
-        text: $(el).find(selector.text).first().text() || null,
-        href: urlDomain + $(el).find('a').attr(selector.href),
+        text,
+        href,
       };
-      validateArticle(article);
+      // validateArticle(article);
       urlNews.article.push(article);
     });
     return urlNews;

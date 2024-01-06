@@ -57,10 +57,13 @@ export const generateMailDataWithArticles = (
   const mailData = config.mailer;
   let html = '';
   articleNews.forEach((article) => {
+    const articleHref = article.article.href
+      ? article.article.href
+      : config.parseUrl[0].link;
     html += `<strong>Sekce:</strong> ${article.urlName}<br>`;
     html += `<strong>Nadpis:</strong> ${article.article.title}<br>`;
     html += `<strong>Text:</strong> ${article.article.text}<br>`;
-    html += `<a href='${article.article.href}' title='${article.article.title}'>-> Odkaz na detail <-</a><br><br>`;
+    html += `<a href='${articleHref}' title='${article.article.title}'>-> Odkaz na detail <-</a><br><br>`;
   });
   mailData.mailOptions.html = html;
   return mailData;

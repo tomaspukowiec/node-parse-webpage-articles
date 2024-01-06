@@ -20,9 +20,7 @@ const validateFields = async (configFile: Config) => {
   if (
     isEmpty(configFile.parseUrlSelectors) ||
     isEmpty(configFile.parseUrlSelectors.main) ||
-    isEmpty(configFile.parseUrlSelectors.articleTitle) ||
-    isEmpty(configFile.parseUrlSelectors.articleText) ||
-    isEmpty(configFile.parseUrlSelectors.articleDetailHref)
+    isEmpty(configFile.parseUrlSelectors.articleTitle)
   ) {
     throw new Error('-> Missing parseUrlSelectors configuration');
   }
